@@ -118,5 +118,14 @@ Github Flow
 	- [] Debugging
 - [] Deployment
 
+TO DO
+- Change name, repo to "Rolodex"
+- Add nodemon to Gulp, remove nodemon
+- Styles
+- Angular
+- Testing
+	- Fix 'edit' API
+- Launch to Heroku
+- Submit
 
 

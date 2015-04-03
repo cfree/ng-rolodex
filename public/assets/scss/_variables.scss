@@ -1,0 +1,52 @@
+//------------------------------------------------
+// Variables
+//------------------------------------------------
+
+// Rhythm
+$space: 20px;
+
+
+
+
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+$gray-dark: #444;
+$gray-light: #ccc;
+$primary: tomato;
+$secondary: turquoise;
+
+
+
+
+
+// Fonts 
+$font-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-serif: Georgia, 'Times New Roman', serif;
+
+
+
+
+
+// Breakpoints
+$break-small: 480px;
+$break-medium: 720px;
+$break-large: 960px;
+$break-xl: 1200px;
+$max-width: 1600px;
+
+
+
+
+
+// Grid
+$susy: (
+	columns: 12,
+	container: $max-width,
+	gutters: 1/2
+);
+
+
+
+
