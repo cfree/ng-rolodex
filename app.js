@@ -5,7 +5,7 @@ var express = require('express'),
 	app = express();
 
 // Connect to the database
-mongoose.connect('mongodb://localhost/kontakte', function(err) {
+mongoose.connect('mongodb://localhost/referenz', function(err) {
 	if (err) {
 		console.log('Database Connection Error', err);
 	} else {
@@ -29,5 +29,5 @@ app.get('/', function(req, res) {
 
 // Fire it up
 var server = app.listen(3000, function() {
-  	console.log('Kontakte is listening at http://localhost:%s', server.address().port);
+  	console.log('Referenz is listening at http://localhost:%s', server.address().port);
 });

@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<base href="/">
 
-		<title>Kontakte - A simple contacts manager</title>
+		<title>Referenz - A simple contacts manager</title>
 
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<link rel="stylesheet" href="assets/css/styles.css">
@@ -18,7 +18,7 @@
 		<div class="site-wrapper">
 			<header class="site-header">
 				<h1 class="site-title">
-					<a href="/">Kontakte</a>
+					<a href="/">Referenz</a>
 				</h1>
 				<ul class="header__social">
 					<li class="header__social--github"><a href="https://github.com/cfree/kontakte" target="_blank">GitHub</a></li>
@@ -42,7 +42,114 @@
 				</ul>
 			</aside>
 			<main class="site-primary">
-				<h2></h2>
+				<h2>Add Contact Details</h2>
+				<form class="form-contacts" action="/api/contacts" method="post">
+					<p>
+						<label for="contact__first-name">
+							<span>First Name</span>
+							<input id="contact__first-name" name="first-name" class="field--is-required" type="text">
+							<div class="field__validation-bubble">
+								<ul>
+									<li class="field--is-validated">Required</li>
+									<li>Minimum of 3 letters</li>
+								</ul>
+							</div>
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__last-name">
+							<span>Last Name</span>
+							<input id="contact__last-name" name="last-name" class="field--is-required" type="text">
+							<div class="field__validation-bubble">
+								<ul>
+									<li>Required</li>
+									<li>Minimum of 3 letters</li>
+								</ul>
+							</div>
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__street1">
+							<span>Street Address - Line 1</span>
+							<input id="contact__street1" name="street1" class="field--wide" type="text">
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__street2">
+							<span>Street Address - Line 2</span>
+							<input id="contact__street2" name="street2" class="field--wide" type="text">
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__country">
+							<span>Country</span>
+							<select id="contact__country" name="country">
+								<option value="none" selected>-- Choose a Country --</option>
+								<option value="us">United States</option>
+								<option value="ca">Canada</option>
+							</select>
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__city">
+							<span>City</span>
+							<input id="contact__city" name="city" type="text">
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__state">
+							<span>State (Province)</span>
+							<select id="contact__state" name="state">
+								<option value="none" selected>-- Choose a State (Province) --</option>
+								<option value="ca">California</option>
+								<option value="ca">Colorado</option>
+								<option value="ct">Connecticut</option>
+							</select>
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__phone">
+							<span>Last Name</span>
+							<input id="contact__phone" name="phone" class="field--is-required field--passes-validation" type="tel">
+							<div class="field__validation-bubble">
+								<ul>
+									<li class="field--is-validated">Required</li>
+								</ul>
+							</div>
+						</label>
+					</p>
+
+					<p>
+						<label for="contact__email">
+							<span>Email Address</span>
+							<input id="contact__email" name="email" required class="field--is-required field--passes-validation" type="email">
+							<div class="field__validation-bubble">
+								<ul>
+									<li>Required</li>
+								</ul>
+							</div>
+						</label>
+					</p>
+
+					<p>
+						<button class="form__submit-btn form__submit-btn--disabled">Update</button>
+					</p>
+
+					<p>
+						<button class="form__submit-btn">Update</button>
+					</p>
+
+					<p>
+						<button class="form__submit-btn form__submit-btn--errors">Update</button>
+					</p>
+				</form>
 			</main>
 		</div>
 

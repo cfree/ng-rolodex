@@ -1,4 +1,4 @@
-# Kontakte
+# Referenz
 
 A simple contacts manager.
 
@@ -102,17 +102,17 @@ Github Flow
 	- max-width: 1600px
 
 #### Construction
-- [] Setup project
-	- [] Git Repo
-		- [] .gitignore
-	- [] .editorconfig
-	- [] package.json
-	- [] Bower
-	- [] Gulp.js
-- [] Markup
+- [x] Setup project
+	- [x] Git Repo
+		- [x] .gitignore
+	- [x] .editorconfig
+	- [x] package.json
+	- [x] Bower
+	- [x] Gulp.js
+- [x] Markup
 - [] Styles
 - [] Functionality
-- [] Build API
+- [x] Build API
 - [] Data Integration
 - [] Testing
 	- [] Debugging

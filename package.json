@@ -1,5 +1,5 @@
 {
-  "name": "Kontakte",
+  "name": "Referenz",
   "version": "1.0.0",
   "description": "A tool to help organize and manage contacts.",
   "dependencies": {
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:cfree/kontakte.git"
+    "url": "git@github.com:cfree/referenz.git"
   },
   "author": "Craig Freeman",
   "license": "GPL 2",
   "bugs": {
-    "url": "https://github.com/cfree/kontakte/issues"
+    "url": "https://github.com/cfree/referenz/issues"
   },
-  "homepage": "https://github.com/cfree/kontakte",
+  "homepage": "https://github.com/cfree/referenz",
   "private": true
 }
