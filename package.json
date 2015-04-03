@@ -1,5 +1,5 @@
 {
-  "name": "Referenz",
+  "name": "Rolodex",
   "version": "1.0.0",
   "description": "A tool to help organize and manage contacts.",
   "dependencies": {
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:cfree/referenz.git"
+    "url": "git@github.com:cfree/rolodex.git"
   },
   "author": "Craig Freeman",
   "license": "GPL 2",
   "bugs": {
-    "url": "https://github.com/cfree/referenz/issues"
+    "url": "https://github.com/cfree/rolodex/issues"
   },
-  "homepage": "https://github.com/cfree/referenz",
+  "homepage": "https://github.com/cfree/rolodex",
   "private": true
 }

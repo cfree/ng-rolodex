@@ -1,4 +1,4 @@
-# Referenz
+# Rolodex
 
 A simple contacts manager.
 
@@ -31,6 +31,7 @@ Github Flow
 	- Gulp.js
 	- Bower
 	- jQuery
+	- Modernizr
 - Back-end
 	- Express.js
 	- MongoDB
@@ -109,23 +110,14 @@ Github Flow
 	- [x] package.json
 	- [x] Bower
 	- [x] Gulp.js
+- [x] Build API
 - [x] Markup
 - [] Styles
 - [] Functionality
-- [x] Build API
 - [] Data Integration
 - [] Testing
 	- [] Debugging
-- [] Deployment
-
-TO DO
-- Change name, repo to "Rolodex"
-- Add nodemon to Gulp, remove nodemon
-- Styles
-- Angular
-- Testing
-	- Fix 'edit' API
-- Launch to Heroku
-- Submit
+		- [ ] Fix 'edit' API
+- [] Deployment to Heroku
 
 
