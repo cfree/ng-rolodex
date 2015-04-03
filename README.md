@@ -83,11 +83,11 @@ Github Flow
 
 ##### API
 - /api
-	/contacts - GET - list
-	/contacts - POST - create
-	/contacts:/id - GET - read
-	/contacts/:id - PUT - update
-	/contacts/:id - DELETE - delete
+	- /contacts - GET - list
+	- /contacts - POST - create
+	- /contacts:/id - GET - read
+	- /contacts/:id - PUT - update
+	- /contacts/:id - DELETE - delete
 
 ##### Estimates
 	
