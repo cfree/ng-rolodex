@@ -25,7 +25,9 @@
   },
   "scripts": {
     "watch": "node_modules/gulp/bin/gulp.js watch",
-    "build": "node_modules/gulp/bin/gulp.js build"
+    "build": "node_modules/gulp/bin/gulp.js build",
+    "install": "node_modules/gulp/bin/gulp.js install",
+    "serve": "node_modules/nodemon/bin/nodemon.js app.js"
   },
   "repository": {
     "type": "git",
