@@ -19,7 +19,7 @@
 // @import "fonts";
 
 // // Structure
-// @import "structure";
+@import "structure";
 
 // // Typography
 // @import "typography";
@@ -28,9 +28,9 @@
 // @import "icons";
 
 // // Layout
-// @import "layout/header";
-// @import "layout/content";
-// @import "layout/sidebar";
+@import "layout/header";
+@import "layout/content";
+@import "layout/sidebar";
 
 // // Utility
 // @import "utility";

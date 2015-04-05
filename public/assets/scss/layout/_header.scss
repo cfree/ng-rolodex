@@ -1,0 +1,50 @@
+//------------------------------------------------
+// Layout - Header
+//------------------------------------------------
+
+.site-header {
+	a {
+		color: $black;
+		display: inline-block;
+		position: relative;
+		text-decoration: none;
+
+		&:after {
+			background-color: transparent;
+			bottom: 0;
+			content: '';
+			height: 3px;
+			left: 0;
+			position: absolute;
+			transition: background-color 0.3s;
+			width: 100%;
+		}
+
+		&:hover {
+			&:after {
+				background-color: $secondary;
+			}
+		}
+	}
+}
+
+.site-title {
+	padding: 0 $space;
+
+	a:after {
+		height: 5px;
+	}
+}
+
+.header__social {
+	list-style: none;
+	margin: 40px 0 0;
+	text-align: right;
+	padding: 0;
+
+	li {
+		display: inline-block;
+		margin: 0 $space 0 0;
+		padding: 0;
+	}
+}

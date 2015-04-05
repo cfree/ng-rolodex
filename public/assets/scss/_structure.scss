@@ -1,0 +1,57 @@
+//------------------------------------------------
+// Structure
+//------------------------------------------------
+
+body {
+	background: $gray-light;
+}
+
+.container {
+	@include clearfix;
+	@include container;
+	border: 1px solid $gray-light;
+	padding: 0 ($space * 0.5);
+
+	@include breakpoint($break-medium) {
+		padding: 0 $space;
+	}
+}
+
+.site-header {
+	@include clearfix;
+	background: $gray-light;
+}
+
+.site-title {
+	@include span(6 at 1 of 12 first);
+}
+
+.header__social {
+	@include span(3 at 9 of 12 last);
+}
+
+.site-content {
+	@include clearfix;
+	background: $white;
+	margin-bottom: gutter(after);
+	position: relative;
+}
+
+.site-primary {
+	@include box-sizing(border-box);
+	@include span(9 at 4);
+	@include push(3);
+	padding-right: gutter(after);
+	padding-bottom: gutter(after);
+}
+
+.site-secondary {
+	@include span(3 at 1 first);
+	background: $primary;
+	border-top: none;
+	height: 100%;
+	overflow: scroll;
+	position: absolute;
+}
+
+

@@ -1,0 +1,180 @@
+//------------------------------------------------
+// Layout - Content
+//------------------------------------------------
+
+.site-primary {
+	p {
+		margin-top: 0;
+	}
+}
+
+.form-contacts {
+	@include clearfix;
+	border: 1px solid $gray-dark;
+	padding: $space;
+
+	label {
+		clear: both;
+		display: inline-block;
+		float: left;
+		margin-bottom: 1.5em;
+
+		span {
+			display: block;
+		}
+	}
+
+	input {
+		@include appearance(none);
+		@include border-radius(none);
+		@include box-shadow(0);
+
+		&:focus {
+			background: $gray-light;
+			outline: none;
+		}
+	}
+
+	select {
+		width: 265px;
+	}
+
+	p {
+		clear: both;
+	}
+}
+
+.field--regular,
+.field--wide {
+	border: 1px solid $gray-dark;
+	font-size: 18px;
+	padding: 10px 5px 7px;
+	width: 250px;
+}
+
+.field--wide {
+	width: 450px;
+}
+
+.field--needs-validation {
+	@include box-shadow(inset 5px 0 0 0 $warning);
+	padding-left: 10px;
+
+	&.field--passes-validation {
+		@include box-shadow(inset 5px 0 0 0 $primary-dark);
+	}
+}
+
+.field__validation {
+	display: inline-block;
+	position: relative;
+}
+
+.field__validation-bubble {
+	@include border-radius(3px);
+	background: $gray-light;
+	color: $warning;
+	display: inline-block;
+	font-size: 11px;
+	left: 100%;
+	line-height: 1.2;
+	list-style: none;
+	margin: 0;
+	margin-left: 20px;
+	opacity: 0;
+	overflow: hidden;
+	padding: 7px;
+	position: absolute;
+	top: -5px;
+	transition: opacity 0.3s, top 0.3s, color 0.2s;
+	width: 115px;
+
+	&:before {
+		border-top: 7px solid transparent;
+		border-bottom: 7px solid transparent; 
+		border-right: 7px solid $gray-light;
+		content: '';
+		height: 0;
+		position: absolute;
+		right: 100%;
+		top: 7px;
+		width: 0;
+	}
+
+	.field--needs-validation:focus + & {
+		opacity: 1;
+		overflow: visible;
+		top: 0;
+	}
+
+	.field--is-validated {
+		color: $primary-dark;
+	}
+
+	li {
+		&:before {
+			content: '- ';
+		}
+	}
+}
+
+.form__submit-btn {
+	@include appearance(none);
+	@include border-radius(0);
+	@include box-shadow(0);
+	border: none;
+	background: $secondary;
+	color: $white;
+	padding: 10px 15px 7px;
+	position: relative;
+	transition: left 0.5 ease-in-out;
+
+	&:hover {
+		background: $secondary-dark;
+	}
+
+	&[disabled] {
+		background: darken($gray-light, 10%);
+
+		&:hover {
+			background: darken($gray-light, 10%);
+		}
+	}
+}
+
+@include keyframes(wiggle) {
+	0% {
+		@include transform(rotate(4deg));
+		
+	}
+	20% {
+		@include transform(rotate(-4deg));
+	}
+	40% {
+		@include transform(rotate(4deg));
+	}
+	50% {
+		background: $warning;
+	}
+	60% {
+		@include transform(rotate(-4deg));
+	}
+	80% {
+		@include transform(rotate(4deg));
+	}
+	100% {
+		@include transform(rotate(-4deg));
+		background: $secondary;	
+	}
+}
+
+.form__submit-btn--errors {
+	@include animation(wiggle 1s);
+	@extend .form__submit-btn;
+}
+
+.form__message-box {
+	margin-left: 15px;
+}
+
+
