@@ -20,10 +20,11 @@ app.use(bodyParser.json());
 app.use('/api/contacts', contacts);
 
 // Route for static files
-app.use(express.static('public'));
+app.use('/app', express.static(__dirname + '/public/app'));
+app.use('/assets', express.static(__dirname + '/public/assets'));
 
 // Default route
-app.get('/', function(req, res) {
+app.get('/*', function(req, res) {
 	res.sendFile(__dirname + '/public/main.html');
 });
 

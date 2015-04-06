@@ -3,7 +3,7 @@
     "authors": [
       "Craig Freeman <craigfreeman@gmail.com> (http://craigfreeman.net)"
     ],
-    "main": "public/assets/dist/style.min.css",
+    "main": "public/assets/css/style.css",
     "ignore": [
         ".jshintrc",
         "**/*.txt"
@@ -11,6 +11,7 @@
     "dependencies": {
         "modernizr": "2.8.3",
         "angular": "1.3.15",
+        "angular-route": "1.3.15",
         "jquery": "2.1.3"
     },
     "license": "GPL 2",
