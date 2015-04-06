@@ -16,14 +16,12 @@
 }
 
 .contacts-list__item {
-	@include appearance(none);
-	@include border-radius(0);
-	@include box-shadow(0);
+	@include box-sizing(border-box);
 	background: transparent;
-	border: none;
+	color: $black;
 	display: block;
 	padding: 14px $space 11px;
-	text-align: left;
+	text-decoration: none;
 	transition: background 0.3s;
 	width: 100%;
 

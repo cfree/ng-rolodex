@@ -7,13 +7,13 @@
 		<base href="/">
 
 		<title>Rolodex - A simple contacts manager</title>
+		<link rel="shortcut icon" href="favicon.ico">
 
-		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<link rel="stylesheet" href="assets/css/styles.css">
 
 		<script src="assets/vendor/modernizr/modernizr.js"></script>
 	</head>
-	<body>
+	<body ng-app="rdApp">
 		<div class="breakpoint-context"></div>
 		<div class="container">
 			<header class="site-header">
@@ -25,118 +25,32 @@
 					<a href="/">Rolodex</a>
 				</h1>
 			</header>
+
 			<main class="site-content">
-				<aside class="site-secondary">
-					<ul class="contacts-list">
-						<li class="contacts-list__contact">
-							<button type="button" class="js-add-contact contacts-list__item contacts-list__item--active contacts-list__item--add">Add New Contact</button>
-						</li>
-						<li class="contacts-list__contact">
-							<button type="button" class="js-edit-contact contacts-list__item">Contact Name</button>
-						</li>
-						<li class="contacts-list__contact">
-							<button type="button" class="js-edit-contact contacts-list__item">Contact Name</button>
-						</li>
-						<li class="contacts-list__contact">
-							<button type="button" class="js-edit-contact contacts-list__item">Contact Name</button>
-						</li>
-					</ul>
-				</aside>
-				<section class="site-primary">
-					<h2>Add Contact Details</h2>
-					<form class="form-contacts" action="/api/contacts" method="post">
-						<label for="contact__first-name">
-							<span>First Name</span>
-							<div class="field__validation">
-								<input id="contact__first-name" name="first-name" class="field--regular field--needs-validation" type="text">
-								<ul class="field__validation-bubble">
-									<li class="field--is-validated">Required</li>
-									<li>Minimum of 3 letters</li>
-								</ul>
-							</div>
-						</label>
-
-						<label for="contact__last-name">
-							<span>Last Name</span>
-							<div class="field__validation">
-								<input id="contact__last-name" name="last-name" class="field--regular field--needs-validation" type="text">
-								<ul class="field__validation-bubble">
-									<li>Required</li>
-									<li>Minimum of 3 letters</li>
-								</ul>
-							</div>
-						</label>
-
-						<label for="contact__street1">
-							<span>Street Address - Line 1</span>
-							<input id="contact__street1" name="street1" class="field--wide" type="text">
-						</label>
-
-						<label for="contact__street2">
-							<span>Street Address - Line 2</span>
-							<input id="contact__street2" name="street2" class="field--wide" type="text">
-						</label>
-
-						<label for="contact__country">
-							<span>Country</span>
-							<select id="contact__country" name="country">
-								<option value="none" selected="selected">-- Choose a Country --</option>
-								<option value="us">United States</option>
-								<option value="ca">Canada</option>
-							</select>
-						</label>
-
-						<label for="contact__city">
-							<span>City</span>
-							<input id="contact__city" name="city" type="text" class="field--regular">
-						</label>
-
-						<label for="contact__state">
-							<span>State (Province)</span>
-							<select id="contact__state" name="state">
-								<option value="none" selected="selected">-- Choose a State (Province) --</option>
-								<option value="ca">California</option>
-								<option value="ca">Colorado</option>
-								<option value="ct">Connecticut</option>
-							</select>
-						</label>
-
-						<label for="contact__phone">
-							<span>Phone Number</span>
-							<div class="field__validation">
-								<input id="contact__phone" name="phone" class="field--regular field--needs-validation field--passes-validation" type="tel" placeholder="ex: 1-555-555-5555">
-								<ul class="field__validation-bubble">
-									<li class="field--is-validated">Required</li>
-								</ul>
-							</div>
-						</label>
-
-						<label for="contact__email">
-							<span>Email Address</span>
-							<div class="field__validation">
-								<input id="contact__email" name="email" class="field--regular field--needs-validation" type="email">
-								<ul class="field__validation-bubble">
-									<li>Required</li>
-								</ul>
-							</div>
-						</label>
-
-						<p>
-							<button class="form__submit-btn" disabled="disabled">Update</button>
-
-							<button class="form__submit-btn">Update</button>
-
-							<button class="form__submit-btn form__submit-btn--errors">Update</button>
-
-							<span class="form__message-box">Success!</span>
-						</p>
-					</form>
-				</section>
+				<aside class="site-secondary" rd-secondary></aside>
+				<section class="site-primary" ng-view></section>
 			</main>
 		</div>
 
-		<!-- Scripts -->
-		<script src="assets/vendor/angular/angular.min.js"></script>
+		<!-- Vendor Scripts -->
 		<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+
+		<!-- Bootstrapping -->
+		<script src="assets/vendor/angular/angular.min.js"></script>
+		<script src="assets/vendor/angular-route/angular-route.min.js"></script>
+		<script src="app/rolodex.module.js"></script>
+		<script src="app/rolodex.route.js"></script>
+		<script src="app/factories/contacts.factory.js"></script>
+
+		<!-- Layout -->
+		<script src="app/contacts/secondary.directive.js"></script>
+		<script src="app/contacts/secondary.controller.js"></script>
+
+		<!-- Contacts -->
+		<script src="app/contacts/view.controller.js"></script>
+		<script src="app/contacts/list.controller.js"></script>
+		<script src="app/contacts/add.controller.js"></script>
+		<script src="app/contacts/edit.controller.js"></script>
+		
 	</body>
 </html>

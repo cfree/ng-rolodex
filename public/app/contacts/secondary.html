@@ -1,0 +1,10 @@
+<ul class="contacts-list">
+	<li class="contacts-list__contact">
+		<div ng-if="vm.isAddPage()" class="contacts-list__item contacts-list__item--add contacts-list__item--active">Add New Contact</div>
+		<a href="/add" ng-if="!vm.isAddPage()" class="contacts-list__item contacts-list__item--add">Add New Contact</a>
+	</li>
+	<li class="contacts-list__contact" ng-repeat="person in vm.contacts | orderBy: 'firstName'">
+		<div ng-if="vm.isSelected(person._id)" class="contacts-list__item contacts-list__item--active">{{person.firstName + ' ' + person.lastName}}</div>
+		<a href="/view/{{person._id}}" ng-if="!vm.isSelected(person._id)" class="contacts-list__item">{{person.firstName + ' ' + person.lastName}}</a>
+	</li>
+</ul>
