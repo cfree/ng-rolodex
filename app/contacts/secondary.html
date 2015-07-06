@@ -1,0 +1,8 @@
+<ul class="contacts-list">
+	<li class="contacts-list__contact">
+		<a href="/add" ng-class="{'contacts-list__item--active': 'tbd' === vm.activeItem || vm.isCurrentPage('tbd')}" ng-click="vm.activeItem = 'tbd'" class="contacts-list__item contacts-list__item--add">Add New Contact</a>
+	</li>
+	<li class="contacts-list__contact" ng-repeat="person in vm.contacts | orderBy: 'firstName'">
+		<a href="/edit/{{person._id}}" ng-class="{'contacts-list__item--active': person._id === vm.activeItem || vm.isCurrentPage(person._id)}" ng-click="vm.activeItem = person._id" class="contacts-list__item">{{person.firstName + ' ' + person.lastName}}</a>
+	</li>
+</ul>

@@ -597,6 +597,7 @@ body {
 .site-content {
   background: #ffffff;
   margin-bottom: 2.85714%;
+  min-height: 650px;
   position: relative;
 }
 .site-content:before, .site-content:after {
@@ -786,7 +787,7 @@ body {
   content: '- ';
 }
 
-.form__submit-btn, .form__submit-btn--errors {
+.form__submit-btn, .form__submit-btn--errors, .form__submit-btn--delete {
   -moz-appearance: none;
   -webkit-appearance: none;
   -moz-border-radius: 0;
@@ -802,13 +803,13 @@ body {
   position: relative;
   transition: left 0.5 ease-in-out;
 }
-.form__submit-btn:hover, .form__submit-btn--errors:hover {
+.form__submit-btn:hover, .form__submit-btn--errors:hover, .form__submit-btn--delete:hover {
   background: #FF6446;
 }
-.form__submit-btn[disabled], [disabled].form__submit-btn--errors {
+.form__submit-btn[disabled], [disabled].form__submit-btn--errors, [disabled].form__submit-btn--delete {
   background: lightgray;
 }
-.form__submit-btn[disabled]:hover, [disabled].form__submit-btn--errors:hover {
+.form__submit-btn[disabled]:hover, [disabled].form__submit-btn--errors:hover, [disabled].form__submit-btn--delete:hover {
   background: lightgray;
 }
 
@@ -918,6 +919,11 @@ body {
   -moz-animation: wiggle 1s;
   -webkit-animation: wiggle 1s;
   animation: wiggle 1s;
+}
+
+.form__submit-btn--delete {
+  float: right;
+  margin-top: 1.7em;
 }
 
 .form__message-box {

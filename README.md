@@ -112,12 +112,24 @@ Github Flow
 	- [x] Gulp.js
 - [x] Build API
 - [x] Markup
-- [] Styles
-- [] Functionality
-- [] Data Integration
-- [] Testing
-	- [] Debugging
+- [x] Styles
+- [ ] Functionality
+    - [ ] Use $validate
+- [ ] Data Integration
+- [ ] Testing
+	- [ ] Write unit tests
+	- [ ] Debugging
 		- [ ] Fix 'edit' API
-- [] Deployment to Heroku
+- [ ] Set up Gulp
+	- [ ] Dev: Concatenate, annotate
+	- [ ] Prod: Concatenate, annotate, minify
+- [ ] Deployment to Heroku
+
+#### Wishlist
+- [ ] Use $resource
+- [ ] User authentication
+- [ ] Add ngAria for accessibility
+- [ ] Integrate Browserify
+
 
 

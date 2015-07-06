@@ -1,4 +1,5 @@
-<h2>Add Contact Details</h2>
+<button ng-click="vm.deleteContact()" class="form__submit-btn--delete" ng-show="vm.showDelete" type="button">Delete</button>
+<h2>{{vm.titlePrefix}} Contact Details</h2>
 <form class="form-contacts" action="/api/contacts" method="post">
 	<label for="contact__first-name">
 		<span>First Name</span>

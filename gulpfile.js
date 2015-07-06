@@ -16,11 +16,14 @@ var gulp = require('gulp'),
     joinFiles = require('gulp-concat'),
 	watching = false,
 	rename = require('gulp-rename'),
+	ngAnnotate = require('gulp-ng-annotate'),
+	sourcemaps = require('gulp-sourcemaps')
 	files = {
 		all: {
 			scss: 'public/assets/scss/**/*.scss',
 			css: 'public/assets/css/*.css',
 			js: {
+				app: 'app/**/*.js',
 				custom: 'public/assets/js/**/*.js',
 				vendor: 'public/assets/vendor/**/*.min.js'
 			},
@@ -28,7 +31,8 @@ var gulp = require('gulp'),
 		},
 		dist: {
 			css: 'public/assets/dist/styles.min.css',
-			js: 'public/assets/dist/scripts.min.css'
+			js: 'public/assets/dist/scripts.min.css',
+			app: 'public/assets/dist/app.min.css'
 		}
 	},
 	paths = {
@@ -37,6 +41,7 @@ var gulp = require('gulp'),
 		js: 'public/assets/js/',
 		img: 'public/assets/img/',
 		bower: 'public/assets/vendor/',
+		app: 'app/',
 		dist: 'public/assets/dist/'
 	};
 
@@ -65,16 +70,22 @@ gulp.task('compileSass', function() {
 		.pipe(notify('Compass successfully compiled'));
 });
 
-// Error checking scripts
-gulp.task('lintScripts', function() {
-	return gulp.src(files.all.js.custom)
+// Compile scripts
+gulp.task('compileScripts', function() {
+	gulp.src(files.all.js.app)
 		.pipe(jsHint())
 		.pipe(jsHint.reporter('default'))
 		.on('error', notify.onError(function(file) {
 			if (!file.jshint.success) {
 				return 'JSHint failed. Check console for errors';
 			}
-		}));
+		}))
+		.pipe(sourcemaps.init())
+			.pipe(joinFiles('app.min.js'))
+			// .pipe(ngAnnotate())
+			// .pipe(jsMinify())
+		// .pipe(sourcemaps.write())
+		.pipe(gulp.dest(paths.dist));
 });
 
 // Install Bower components
@@ -101,28 +112,19 @@ gulp.task('readyStyles', function() {
 		.pipe(gulp.dest(paths.dist));
 });
 
-// Process script files
-gulp.task('readyScripts', function() {
-	gulp.src(paths.js + 'scripts.js')
-		.pipe(joinFiles('scripts.min.js'))
-		.pipe(jsMinify())
-		// .pipe(rename('scripts.min.js'))
-		.pipe(gulp.dest(paths.dist));
-});
-
 
 /**
  * Run tasks
  */
 gulp.task('watch', ['setWatchStatus'], function() {
 	gulp.watch(files.all.scss, ['compileSass']);
-	gulp.watch(files.all.js.custom, ['lintScripts']);
+	gulp.watch(files.all.js.custom, ['compileScripts']);
 	livereload.listen();
 });
 
-gulp.task('build', ['readyStyles', 'readyScripts']);
+gulp.task('build', ['readyStyles']);
 
 gulp.task('install', ['runBower']);
 
 // Default task
-gulp.task('default', ['compileSass', 'lintScripts']);
+gulp.task('default', ['compileSass', 'compileScripts']);

@@ -173,6 +173,12 @@
 	@extend .form__submit-btn;
 }
 
+.form__submit-btn--delete {
+	@extend .form__submit-btn;
+	float: right;
+	margin-top: 1.7em;
+}
+
 .form__message-box {
 	margin-left: 15px;
 }

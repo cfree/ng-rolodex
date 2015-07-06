@@ -34,6 +34,7 @@ body {
 	@include clearfix;
 	background: $white;
 	margin-bottom: gutter(after);
+	min-height: 650px;
 	position: relative;
 }
 
