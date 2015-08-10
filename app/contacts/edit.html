@@ -42,16 +42,6 @@
 		</select>
 	</label>
 
-	<label for="contact__city">
-		<span>City</span>
-		<input id="contact__city" name="city" type="text" class="field--regular" ng-model="fm.user.city">
-	</label>
-
-	<label for="contact__zip">
-		<span>Zip Code</span>
-		<input id="contact__zip" name="zip" type="text" class="field--regular" ng-model="fm.user.zip">
-	</label>
-
 	<label for="contact__state">
 		<div ng-if="!fm.isCanada(fm.user.country)">
 			<span>State</span>
@@ -131,6 +121,16 @@
 		</div>
 	</label>
 
+	<label for="contact__city">
+		<span>City</span>
+		<input id="contact__city" name="city" type="text" class="field--regular" ng-model="fm.user.city">
+	</label>
+
+	<label for="contact__zip">
+		<span>Zip Code</span>
+		<input id="contact__zip" name="zip" type="text" class="field--regular" ng-model="fm.user.zip">
+	</label>
+
 	<label for="contact__phone">
 		<span>Phone Number</span>
 		<div class="field__validation">
@@ -154,7 +154,7 @@
 	</label>
 
 	<p>
-		<button type="submit" class="form__submit-btn" ng-disabled="formContacts.$invalid || formContacts.$pristine">Update</button>
+		<button type="submit" class="form__submit-btn" ng-disabled="formContacts.$invalid || formContacts.$pristine">{{vm.buttonLabel}}</button>
 
 		<span class="form__message-box" ng-show="fm.recordUpdated">Contact updated!</span>
 	</p>

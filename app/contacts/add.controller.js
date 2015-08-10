@@ -8,6 +8,7 @@
 		/* jshint validthis: true */
 		var vm = this;
 		vm.titlePrefix = 'Add';
+		vm.buttonLabel = 'Add Contact';
 		vm.submitForm = submitForm;
 
 		function submitForm(contact) {

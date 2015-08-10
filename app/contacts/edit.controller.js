@@ -8,6 +8,7 @@
 		/* jshint validthis: true */
 		var vm = this;
 		vm.titlePrefix = 'Edit';
+		vm.buttonLabel = 'Update Contact';
 		vm.showDelete = true;
 		vm.id = $routeParams.id;
 		vm.deleteContact = deleteContact;
