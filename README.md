@@ -118,14 +118,9 @@ Github Flow
 - [x] Functionality
     - [x] Use $validate
 - [x] Data Integration
-- [ ] Testing
-	- [ ] Unit tests
-	- [ ] End-to-end tests
-	- [ ] Functional tests 
 - [x] Set up Gulp
 	- [x] Dev: Concatenate, annotate
 	- [x] Prod: Concatenate, annotate, minify
-- [ ] Deployment to Heroku
 
 #### Wishlist
 
@@ -139,6 +134,15 @@ Github Flow
 - [ ] Revise Gulp.js script
     - Remove Compass, replace with Gulp packages
     - Utilize different scripts, styles assets for development and production
+- [ ] Deployment to Heroku
 
+
+## Installation
+
+1. Install, run MongoDB server `mongod`
+2. From the project root, run `npm install`
+3. From the project root, run `gulp build`
+4. From the project root, run `npm run serve`
+5. In a browser, navigate to [http://localhost:3000](http://localhost:3000)
 
 
