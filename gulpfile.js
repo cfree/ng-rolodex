@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 	watching = false,
 	rename = require('gulp-rename'),
 	ngAnnotate = require('gulp-ng-annotate'),
-	sourcemaps = require('gulp-sourcemaps')
+	sourcemaps = require('gulp-sourcemaps'),
 	files = {
 		all: {
 			scss: 'public/assets/scss/**/*.scss',
@@ -62,7 +62,7 @@ gulp.task('compileSass', function() {
 				require: ['susy', 'normalize-scss']
 			})
 			.on('error', notify.onError({
-				message: 'Sass failed. Check console for errors'
+				message: 'Sass failed: <%= error.message %>'
 			}))
 		)
 		.pipe(gulp.dest(paths.css))
@@ -81,11 +81,13 @@ gulp.task('compileScripts', function() {
 			}
 		}))
 		.pipe(sourcemaps.init())
-			.pipe(joinFiles('app.min.js'))
-			// .pipe(ngAnnotate())
-			// .pipe(jsMinify())
-		// .pipe(sourcemaps.write())
-		.pipe(gulp.dest(paths.dist));
+			.pipe(joinFiles('app.js'))
+			.pipe(ngAnnotate())
+				.on('error', notify.onError("Error: <%= error.message %>"))
+			.pipe(jsMinify())
+				.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(paths.js));
 });
 
 // Install Bower components
@@ -112,17 +114,28 @@ gulp.task('readyStyles', function() {
 		.pipe(gulp.dest(paths.dist));
 });
 
+// Process script files
+gulp.task('readyScripts', function() {
+	gulp.src(files.all.js.app)
+		.pipe(joinFiles('app.min.js'))
+		.pipe(ngAnnotate())
+			.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(jsMinify())
+			.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(gulp.dest(paths.dist));
+});
+
 
 /**
  * Run tasks
  */
 gulp.task('watch', ['setWatchStatus'], function() {
 	gulp.watch(files.all.scss, ['compileSass']);
-	gulp.watch(files.all.js.custom, ['compileScripts']);
+	gulp.watch(files.all.js.app, ['compileScripts']);
 	livereload.listen();
 });
 
-gulp.task('build', ['readyStyles']);
+gulp.task('build', ['readyStyles', 'readyScripts']);
 
 gulp.task('install', ['runBower']);
 
