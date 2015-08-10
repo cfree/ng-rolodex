@@ -95,6 +95,7 @@ Github Flow
 ##### Design Wireframes
 
 ##### Grid
+
 - Gutters: 30px
 - Margins: 15px;
 - Breakpoints
@@ -103,6 +104,7 @@ Github Flow
 	- max-width: 1600px
 
 #### Construction
+
 - [x] Setup project
 	- [x] Git Repo
 		- [x] .gitignore
@@ -126,6 +128,7 @@ Github Flow
 - [ ] Deployment to Heroku
 
 #### Wishlist
+
 - [ ] Use $resource
 - [ ] User authentication
 - [ ] Add ngAria for accessibility

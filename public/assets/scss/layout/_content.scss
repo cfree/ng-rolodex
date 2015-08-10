@@ -60,7 +60,7 @@
 	@include box-shadow(inset 5px 0 0 0 $warning);
 	padding-left: 10px;
 
-	&.field--passes-validation {
+	&.ng-valid {
 		@include box-shadow(inset 5px 0 0 0 $primary-dark);
 	}
 }
@@ -107,7 +107,10 @@
 		top: 0;
 	}
 
-	.field--is-validated {
+	.ng-valid-required + & .field--required,
+	.ng-valid-minlength.ng-dirty.ng-valid + & .field--min,
+	.ng-valid-pattern.ng-dirty.ng-valid + & .field--phone,
+	.ng-valid-email.ng-dirty.ng-valid + & .field--email {
 		color: $primary-dark;
 	}
 

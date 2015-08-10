@@ -732,7 +732,7 @@ body {
   box-shadow: inset 5px 0 0 0 #E60400;
   padding-left: 10px;
 }
-.field--needs-validation.field--passes-validation {
+.field--needs-validation.ng-valid {
   -moz-box-shadow: inset 5px 0 0 0 #009281;
   -webkit-box-shadow: inset 5px 0 0 0 #009281;
   box-shadow: inset 5px 0 0 0 #009281;
@@ -780,7 +780,7 @@ body {
   overflow: visible;
   top: 0;
 }
-.field__validation-bubble .field--is-validated {
+.ng-valid-required + .field__validation-bubble .field--required, .ng-valid-minlength.ng-dirty.ng-valid + .field__validation-bubble .field--min, .ng-valid-pattern.ng-dirty.ng-valid + .field__validation-bubble .field--phone, .ng-valid-email.ng-dirty.ng-valid + .field__validation-bubble .field--email {
   color: #009281;
 }
 .field__validation-bubble li:before {
