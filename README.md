@@ -115,16 +115,16 @@ Github Flow
 - [x] Build API
 - [x] Markup
 - [x] Styles
-- [ ] Functionality
-    - [ ] Use $validate
-- [ ] Data Integration
+- [x] Functionality
+    - [x] Use $validate
+- [x] Data Integration
 - [ ] Testing
-	- [ ] Write unit tests
-	- [ ] Debugging
-		- [ ] Fix 'edit' API
-- [ ] Set up Gulp
-	- [ ] Dev: Concatenate, annotate
-	- [ ] Prod: Concatenate, annotate, minify
+	- [ ] Unit tests
+	- [ ] End-to-end tests
+	- [ ] Functional tests 
+- [x] Set up Gulp
+	- [x] Dev: Concatenate, annotate
+	- [x] Prod: Concatenate, annotate, minify
 - [ ] Deployment to Heroku
 
 #### Wishlist
@@ -132,7 +132,13 @@ Github Flow
 - [ ] Use $resource
 - [ ] User authentication
 - [ ] Add ngAria for accessibility
-- [ ] Integrate Browserify
+- [ ] Responsive design
+- [ ] Update to AngularJS 1.4
+- [ ] Better success/error messages
+- [ ] Use ID other than MongoDB `_id`
+- [ ] Revise Gulp.js script
+    - Remove Compass, replace with Gulp packages
+    - Utilize different scripts, styles assets for development and production
 
 
 
