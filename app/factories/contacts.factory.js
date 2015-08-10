@@ -26,6 +26,22 @@
 			});		
 		};
 
+		var addContact = function(contact) {
+			return $http({
+				method: 'POST',
+				url: '/api/contacts/',
+				data: contact
+			});	
+		};
+
+		var updateContact = function(id, contact) {
+			return $http({
+				method: 'PUT',
+				url: '/api/contacts/' + id,
+				data: contact
+			});	
+		};
+
 		return {
 			getContacts: function() {
 				return retrieveContacts();
@@ -35,6 +51,12 @@
 			},
 			deleteContact: function(id) {
 				return removeContact(id);
+			},
+			addContact: function(contact) {
+				return addContact(contact);
+			},
+			updateContact: function(id, contact) {
+				return updateContact(id, contact);
 			}
 		};
 	}

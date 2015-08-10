@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 		state: String,
 		zip: String,
 		country: String,
-		phone: String, // format: +1-555-555-5555
+		phone: String, // format: 1-555-555-5555
 		email: String,
 		updatedAt: {type: Date, default: Date.now}
 	});

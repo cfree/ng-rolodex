@@ -22,7 +22,6 @@ router.get('/', function(req, res, next) {
 
 // Create
 router.post('/', function(req, res, next) {
-	console.log(req.body);
 	// Make a new record
 	Contacts.create(req.body, function(err, newContact) {
 		if (err) {
@@ -49,16 +48,11 @@ router.get('/:id', function(req, res, next) {
 
 // Update
 router.put('/:id', function(req, res, next) {
-	console.log('new');
-	console.log(req.body);
 	// Edit a specific record
-	Contacts.findByIdAndUpdate(req.params.id, req.body, function(err, updatedContact) {
+	Contacts.findByIdAndUpdate(req.params.id, req.body, {'new': true}, function(err, updatedContact) {
 		if (err) {
 			return next(err);
 		}
-
-		console.log('response');
-		console.log(req.body);
 
 		// Updated!
 		res.json(updatedContact);

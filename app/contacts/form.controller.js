@@ -4,18 +4,29 @@
 	angular.module('rdApp')
 		.controller('FormController', formCtrlr);
 
-	function formCtrlr() {
+	function formCtrlr(contactsService, $routeParams) {
 		/* jshint validthis: true */
-		var fm = this;
-		fm.submitForm = submitForm;
+		var fm = this,
+			id = $routeParams.id;
+		fm.user = {};
 		fm.isCanada = isCanada;
 
-		function submitForm(formData) {
-			console.log(fm);
+		if ('undefined' !== typeof id) {
+			getContact(id);
 		}
 
 		function isCanada(country) {
 			return ('CA' === country) ? true : false;
+		}
+
+		function getContact(id) {
+			return contactsService.getContact(id)
+				.then(function(res) {
+					var contact = res.data;
+					contact.fullName = contact.firstName + ' ' + contact.lastName;
+
+					fm.user = contact;
+				});
 		}
 	}
 

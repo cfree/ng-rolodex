@@ -4,35 +4,37 @@
 	angular.module('rdApp')
 		.controller('EditController', viewContact);
 
-	function viewContact($location, $routeParams, contactsService) {
+	function viewContact($window, $location, $routeParams, contactsService) {
 		/* jshint validthis: true */
 		var vm = this;
 		vm.titlePrefix = 'Edit';
 		vm.showDelete = true;
 		vm.id = $routeParams.id;
 		vm.deleteContact = deleteContact;
-
-		getContact(vm.id);
+		vm.submitForm = submitForm;
+		vm.recordUpdated = false;
 
 		function deleteContact() {
-			console.log('clicked');
-			var confirm = window.confirm('You are about to delete the contact for ' + vm.contact.fullName + '. Press OK to confirm.');
+			var confirm = window.confirm('You are about to delete this contact. Press OK to confirm.');
 
 			if (confirm) {
 				return contactsService.deleteContact(vm.id)
 					.then(function(data) {
-						alert('The contact for ' + vm.contact.fullName + ' has been deleted.');
+						alert('The contact has been deleted.');
 						$location.path('/');
+						$window.location.reload();
 					});
 			}
 		}
 
-		function getContact(id) {
-			return contactsService.getContact(id)
-				.then(function(data) {
-					vm.contact = data.data;
-					vm.contact.fullName = vm.contact.firstName + ' ' + vm.contact.lastName;
-					return vm.contact;
+		function submitForm(contact) {
+			return contactsService.updateContact(vm.id, contact)
+				.then(function(res) {
+					vm.contact = res.data;
+					vm.recordUpdated = true;
+
+					$location.path('/edit/' + res.data._id);
+					$window.location.reload();
 				});
 		}
 	}
