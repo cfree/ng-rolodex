@@ -9,15 +9,10 @@ var gulp = require('gulp'),
 	bower = require('gulp-bower'),
 	jsMinify = require('gulp-uglify'),
     cssMinify = require('gulp-minify-css'),
-    joinFiles = require('gulp-concat'),
-    browserify = require('browserify'),
     browserify = require('browserify'),
 	source = require('vinyl-source-stream'),
 	rename = require('gulp-rename'),
-	ngAnnotate = require('gulp-ng-annotate'),
-	sourcemaps = require('gulp-sourcemaps'),
 
-	watching = false,
 	files = {
 		all: {
 			scss: 'public/assets/scss/**/*.scss',
@@ -50,52 +45,46 @@ var gulp = require('gulp'),
  * Development tasks
  */
 
+// Browserify
 gulp.task('browserify', function() {
-	return browserify('./app/rolodex.module.js')
+	return browserify(paths.app + 'rolodex.module.js')
 		.bundle()
 		.pipe(source('app.js'))
-		.pipe(gulp.dest('./public/assets/js/'));
+		.pipe(gulp.dest(paths.js));
 });
 
 // Compile Sass via Compass and refresh styles in browser
-// gulp.task('compileSass', function() {
-// 	return gulp.src(files.all.scss)
-// 		.pipe(
-// 			compass({
-// 				css: paths.css,
-// 				sass: paths.scss,
-// 				image: paths.img,
-// 				comments: false,
-// 				require: ['susy', 'normalize-scss']
-// 			})
-// 			.on('error', notify.onError({
-// 				message: 'Sass failed: <%= error.message %>'
-// 			}))
-// 		)
-// 		.pipe(gulp.dest(paths.css))
-// 		.pipe(livereload())
-// 		.pipe(notify('Compass successfully compiled'));
-// });
+gulp.task('compileSass', function() {
+	return gulp.src(files.all.scss)
+		.pipe(
+			compass({
+				css: paths.css,
+				sass: paths.scss,
+				image: paths.img,
+				comments: false,
+				require: ['susy', 'normalize-scss']
+			})
+			.on('error', notify.onError({
+				message: 'Sass failed: <%= error.message %>'
+			}))
+		)
+		.pipe(gulp.dest(paths.css))
+		.pipe(livereload())
+		.pipe(notify('Compass successfully compiled'));
+});
 
 // Compile scripts
-// gulp.task('compileScripts', function() {
-// 	gulp.src(files.all.js.app)
-// 		.pipe(jsHint())
-// 		.pipe(jsHint.reporter('default'))
-// 		.on('error', notify.onError(function(file) {
-// 			if (!file.jshint.success) {
-// 				return 'JSHint failed. Check console for errors';
-// 			}
-// 		}))
-// 		.pipe(sourcemaps.init())
-// 			.pipe(joinFiles('app.js'))
-// 			.pipe(ngAnnotate())
-// 				.on('error', notify.onError("Error: <%= error.message %>"))
-// 			.pipe(jsMinify())
-// 				.on('error', notify.onError("Error: <%= error.message %>"))
-// 		.pipe(sourcemaps.write())
-// 		.pipe(gulp.dest(paths.js));
-// });
+gulp.task('compileScripts', function() {
+	gulp.src(files.all.js.app)
+		.pipe(jsHint())
+		.pipe(jsHint.reporter('default'))
+		.on('error', notify.onError(function(file) {
+			if (!file.jshint.success) {
+				return 'JSHint failed. Check console for errors';
+			}
+		}))
+		.pipe(gulp.dest(paths.js));
+});
 
 // Install Bower components
 gulp.task('runBower', function() {
@@ -103,10 +92,6 @@ gulp.task('runBower', function() {
 		.pipe(gulp.dest(paths.bower));
 });
 
-// Set watch mode
-// gulp.task('setWatchStatus', function() {
-// 	watching = true;
-// });
 
 
 /**
@@ -114,12 +99,12 @@ gulp.task('runBower', function() {
  */
 
 // Process style files
-// gulp.task('readyStyles', function() {
-// 	gulp.src(files.all.css)
-// 		.pipe(cssMinify())
-// 		.pipe(rename('styles.min.css'))
-// 		.pipe(gulp.dest(paths.dist));
-// });
+gulp.task('readyStyles', function() {
+	gulp.src(files.all.css)
+		.pipe(cssMinify())
+		.pipe(rename('styles.min.css'))
+		.pipe(gulp.dest(paths.dist));
+});
 
 // Process script files
 // gulp.task('readyScripts', function() {
@@ -136,19 +121,15 @@ gulp.task('runBower', function() {
 /**
  * Run tasks
  */
-// gulp.task('watch', ['setWatchStatus'], function() {
-// 	gulp.watch(files.all.scss, ['compileSass']);
-// 	gulp.watch(files.all.js.app, ['compileScripts']);
-// 	livereload.listen();
-// });
+gulp.task('watch', function() {
+	gulp.watch(files.all.scss, ['compileSass']);
+	gulp.watch(files.all.js.app, ['browserify']);
+	livereload.listen();
+});
 
-// gulp.task('build', ['readyStyles', 'readyScripts']);
+gulp.task('build', ['readyStyles', 'readyScripts']);
 
 gulp.task('install', ['runBower']);
 
-gulp.task('ng-watch', function() {
-	gulp.watch('./app/**/*.js', ['browserify']);
-})
-
 // Default task
-// gulp.task('default', ['compileSass', 'compileScripts']);
+gulp.task('default', ['compileSass', 'browserify']);
