@@ -128,12 +128,13 @@ Github Flow
 - [ ] User authentication
 - [ ] Add ngAria for accessibility
 - [ ] Responsive design
-- [ ] Update to AngularJS 1.4
+- [x] Update to AngularJS 1.4
 - [ ] Better success/error messages
 - [ ] Use ID other than MongoDB `_id`
 - [ ] Revise Gulp.js script
-    - Remove Compass, replace with Gulp packages
-    - Utilize different scripts, styles assets for development and production
+    - [ ] Add Browserify
+    - [ ] Remove Compass, replace with Gulp packages
+    - [ ] Utilize different scripts, styles assets for development and production
 - [ ] Deployment to Heroku
 
 
