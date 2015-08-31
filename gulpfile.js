@@ -102,20 +102,22 @@ gulp.task('runBower', function() {
 gulp.task('readyStyles', function() {
 	gulp.src(files.all.css)
 		.pipe(cssMinify())
-		.pipe(rename('styles.min.css'))
+		.pipe(rename(function(path) {
+			path.basename += '.min';
+		}))
 		.pipe(gulp.dest(paths.dist));
 });
 
 // Process script files
-// gulp.task('readyScripts', function() {
-// 	gulp.src(files.all.js.app)
-// 		.pipe(joinFiles('app.min.js'))
-// 		.pipe(ngAnnotate())
-// 			.on('error', notify.onError("Error: <%= error.message %>"))
-// 		.pipe(jsMinify())
-// 			.on('error', notify.onError("Error: <%= error.message %>"))
-// 		.pipe(gulp.dest(paths.dist));
-// });
+gulp.task('readyScripts', function() {
+	gulp.src(files.all.js.custom)
+		.pipe(jsMinify())
+			.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(rename(function(path) {
+			path.basename += '.min';
+		}))
+		.pipe(gulp.dest(paths.dist));
+});
 
 
 /**
