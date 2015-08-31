@@ -2,22 +2,17 @@
  * Define extensions
  */
 var gulp = require('gulp'),
-	gutil = require('gulp-util'),
 	compass = require('gulp-compass'),
-	filesCached = require('gulp-cache'),
-	filesChanged = require('gulp-changed'),
 	jsHint = require('gulp-jshint'),
 	livereload = require('gulp-livereload'),
 	notify = require('gulp-notify'),
-	map = require('map-stream'),
 	bower = require('gulp-bower'),
 	jsMinify = require('gulp-uglify'),
     cssMinify = require('gulp-minify-css'),
-    joinFiles = require('gulp-concat'),
-	watching = false,
+    browserify = require('browserify'),
+	source = require('vinyl-source-stream'),
 	rename = require('gulp-rename'),
-	ngAnnotate = require('gulp-ng-annotate'),
-	sourcemaps = require('gulp-sourcemaps'),
+
 	files = {
 		all: {
 			scss: 'public/assets/scss/**/*.scss',
@@ -50,6 +45,14 @@ var gulp = require('gulp'),
  * Development tasks
  */
 
+// Browserify
+gulp.task('browserify', function() {
+	return browserify(paths.app + 'rolodex.module.js')
+		.bundle()
+		.pipe(source('app.js'))
+		.pipe(gulp.dest(paths.js));
+});
+
 // Compile Sass via Compass and refresh styles in browser
 gulp.task('compileSass', function() {
 	return gulp.src(files.all.scss)
@@ -80,13 +83,6 @@ gulp.task('compileScripts', function() {
 				return 'JSHint failed. Check console for errors';
 			}
 		}))
-		.pipe(sourcemaps.init())
-			.pipe(joinFiles('app.js'))
-			.pipe(ngAnnotate())
-				.on('error', notify.onError("Error: <%= error.message %>"))
-			.pipe(jsMinify())
-				.on('error', notify.onError("Error: <%= error.message %>"))
-		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(paths.js));
 });
 
@@ -96,10 +92,6 @@ gulp.task('runBower', function() {
 		.pipe(gulp.dest(paths.bower));
 });
 
-// Set watch mode
-gulp.task('setWatchStatus', function() {
-	watching = true;
-});
 
 
 /**
@@ -110,18 +102,20 @@ gulp.task('setWatchStatus', function() {
 gulp.task('readyStyles', function() {
 	gulp.src(files.all.css)
 		.pipe(cssMinify())
-		.pipe(rename('styles.min.css'))
+		.pipe(rename(function(path) {
+			path.basename += '.min';
+		}))
 		.pipe(gulp.dest(paths.dist));
 });
 
 // Process script files
 gulp.task('readyScripts', function() {
-	gulp.src(files.all.js.app)
-		.pipe(joinFiles('app.min.js'))
-		.pipe(ngAnnotate())
-			.on('error', notify.onError("Error: <%= error.message %>"))
+	gulp.src(files.all.js.custom)
 		.pipe(jsMinify())
 			.on('error', notify.onError("Error: <%= error.message %>"))
+		.pipe(rename(function(path) {
+			path.basename += '.min';
+		}))
 		.pipe(gulp.dest(paths.dist));
 });
 
@@ -129,9 +123,9 @@ gulp.task('readyScripts', function() {
 /**
  * Run tasks
  */
-gulp.task('watch', ['setWatchStatus'], function() {
+gulp.task('watch', function() {
 	gulp.watch(files.all.scss, ['compileSass']);
-	gulp.watch(files.all.js.app, ['compileScripts']);
+	gulp.watch(files.all.js.app, ['browserify']);
 	livereload.listen();
 });
 
@@ -140,4 +134,4 @@ gulp.task('build', ['readyStyles', 'readyScripts']);
 gulp.task('install', ['runBower']);
 
 // Default task
-gulp.task('default', ['compileSass', 'compileScripts']);
+gulp.task('default', ['compileSass', 'browserify']);
