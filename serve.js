@@ -20,7 +20,6 @@ app.use(bodyParser.json());
 app.use('/api/contacts', contacts);
 
 // Route for static files
-app.use('/app', express.static(__dirname + '/app'));
 app.use('/assets', express.static(__dirname + '/public/assets'));
 
 // Default route
