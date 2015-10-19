@@ -124,6 +124,10 @@ Github Flow
 
 #### Wishlist
 
+- [ ] Unit tests
+	- [ ] Code coverage
+- [ ] Integration tests
+- [ ] Functional tests
 - [ ] Use $resource
 - [ ] User authentication
 - [ ] Add ngAria for accessibility
@@ -132,7 +136,7 @@ Github Flow
 - [ ] Better success/error messages
 - [ ] Use ID other than MongoDB `_id`
 - [ ] Revise Gulp.js script
-    - [ ] Add Browserify
+    - [x] Add Browserify
     - [ ] Remove Compass, replace with Gulp packages
     - [ ] Utilize different scripts, styles assets for development and production
 - [ ] Deployment to Heroku

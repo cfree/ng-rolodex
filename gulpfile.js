@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
 	source = require('vinyl-source-stream'),
 	rename = require('gulp-rename'),
+	mocha = require('gulp-mocha'),
 
 	files = {
 		all: {
@@ -90,6 +91,16 @@ gulp.task('compileScripts', function() {
 gulp.task('runBower', function() {
 	return bower(paths.bower)
 		.pipe(gulp.dest(paths.bower));
+});
+
+
+
+/**
+ * Testing tasks
+ */
+gulp.task('test', function() {
+	return gulp.src('test/unit/**/*.js', {read: false})
+		.pipe(mocha({reporter: 'nyan'}));
 });
 
 

@@ -5,7 +5,7 @@ var angular = require('angular');
 angular.module('rdApp')
 	.controller('AddController', addContact);
 
-function addContact($window, $location, contactsService) {
+function addContact($location, contactsService) {
 	/* jshint validthis: true */
 	var vm = this;
 	vm.titlePrefix = 'Add';
@@ -16,7 +16,6 @@ function addContact($window, $location, contactsService) {
 		return contactsService.addContact(contact)
 			.then(function(res) {
 				$location.path('/edit/' + res.data._id);
-				$window.location.reload();
 			});
 	}
 }

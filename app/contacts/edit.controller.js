@@ -24,7 +24,6 @@ function viewContact($window, $location, $routeParams, contactsService) {
 				.then(function(data) {
 					alert('The contact has been deleted.');
 					$location.path('/');
-					$window.location.reload();
 				});
 		}
 	}
@@ -34,9 +33,7 @@ function viewContact($window, $location, $routeParams, contactsService) {
 			.then(function(res) {
 				vm.contact = res.data;
 				vm.recordUpdated = true;
-
-				$location.path('/edit/' + res.data._id);
-				$window.location.reload();
+				vm.$apply(); // unsure if needed
 			});
 	}
 }
