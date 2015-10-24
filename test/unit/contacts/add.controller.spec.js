@@ -2,22 +2,49 @@ var chai = require('chai'),
 	expect = chai.expect,
 	assert = chai.assert;
 
-describe('AddController', function() {
+var AddController,
+	contactsService,
+	$location;
 
-	describe('submitForm()', function() {
+describe('`AddController` controller', function() {
 
-		beforeEach(function() {
-			angular.mock.module('rdApp');
+	beforeEach(function() {
+		angular.mock.module('rdApp');
+		angular.mock.inject(function($injector) {
+			$controller = $injector.get('$controller');
+			contactsService = $injector.get('contactsService');
+			$location = $injector.get('$location');
+			$rootScope = $injector.get('$rootScope');
+
+			AddController = $controller('AddController', {
+				$location: $location,
+				contactsService: contactsService
+			});
+
+			$rootScope.$apply();
 		});
-		
-		it('loads the $location service');
+	});
 
-		it('loads the contactsService');
+	// Controller gets created
+	it('should be created successfully', function() {
+		expect(AddController).to.be.an('object');
+	});
 
-		it('returns an ID');
+	it('sets `titlePrefix`', function() {
+		expect(AddController.titlePrefix).to.equal('Add');
+	});
 
-		it('triggers a page refresh');
+	it('sets `buttonLabel`', function() {
+		expect(AddController.buttonLabel).to.equal('Add Contact');
+	});
 
+	describe('`submitForm` method', function() {
+		// Method exists
+		it('should exist', function() {
+			expect(typeof AddController.submitForm).to.equal('function');
+		});
+
+		it('submits a new contact');
 	});
 
 });
@@ -34,7 +61,7 @@ describe('AddController', function() {
 // ========== old
 
 // AddController
-describe('AddController controller', function() {
+// describe('AddController controller', function() {
 	// Pre-load the app
 	// beforeEach(angular.mock.module('rdApp'));
 
@@ -45,8 +72,8 @@ describe('AddController controller', function() {
 	// 	contactsService;
 
 	// Pre-load the controller's module
-	beforeEach(function() {
-		angular.mock.module('rdApp');
+	// beforeEach(function() {
+	// 	angular.mock.module('rdApp');
 
 
 
@@ -63,7 +90,7 @@ describe('AddController controller', function() {
 			// $controller = $injector.get('$controller');
 			// return contactsService;
 		// });
-	});
+	// });
 
 	// afterEach(function(){
 	// 	$httpBackend.verifyNoOutstandingExpectation();
@@ -105,7 +132,7 @@ describe('AddController controller', function() {
 
 	// 	expect(formSubmitted).isArray();
 	// });	
-});
+// });
 
 
 
