@@ -37,8 +37,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'progress', 'mocha'],
-    // reporters: ['nyan','dots', 'coverage', 'progress'],
+    reporters: ['dots', 'progress', 'spec'],
 
 
     // web server port
@@ -67,7 +66,9 @@ module.exports = function(config) {
 		'karma-mocha',
 		'karma-mocha-reporter',
 		'karma-phantomjs-launcher',
-		'karma-coverage'
+		'karma-coverage',
+		'karma-spec-reporter',
+		'karma-sinon'
 	],
 
 

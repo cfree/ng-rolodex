@@ -13,7 +13,7 @@ describe('EditController', function() {
 
 		it('returns an ID');
 
-		it('triggers a page refresh');
+		it('triggers a page refresh');	
 
 	});
 

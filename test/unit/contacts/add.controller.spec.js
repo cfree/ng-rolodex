@@ -6,6 +6,10 @@ describe('AddController', function() {
 
 	describe('submitForm()', function() {
 
+		beforeEach(function() {
+			angular.mock.module('rdApp');
+		});
+		
 		it('loads the $location service');
 
 		it('loads the contactsService');
