@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'app/rolodex.module.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'test/**/*.mocks.js',
       'test/**/*.spec.js'
     ],
 

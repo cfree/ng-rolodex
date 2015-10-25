@@ -9,7 +9,8 @@
         "**/*.txt"
     ],
     "dependencies": {
-        "modernizr": "2.8.3"
+        "modernizr": "2.8.3",
+        "bardjs": "*"
     },
     "license": "GPL 2",
     "private": true

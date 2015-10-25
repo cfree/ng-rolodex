@@ -57,27 +57,27 @@ describe('`contactsService` factory', function() {
 		});
 
 		// Method call succeeds - Resolves with list of contacts (stub)
-		it('should return an object of contacts (stub)', function(done) {
-			sinon.stub(contactsService, 'getContacts', function() {
-				return $q.when(sampleContacts);
-			});
+		// it('should return an object of contacts (stub)', function(done) {
+		// 	sinon.stub(contactsService, 'getContacts', function() {
+		// 		return $q.when(sampleContacts);
+		// 	});
 
-			// Call the function, run tests
-			contactsService.getContacts()
-				.then(function(results) {
-					expect(results[0]._id).to.be.greaterThan(0);
-					expect(results[0].firstName).to.equal(sampleContacts[0].firstName);
+		// 	// Call the function, run tests
+		// 	contactsService.getContacts()
+		// 		.then(function(results) {
+		// 			expect(results[0]._id).to.be.greaterThan(0);
+		// 			expect(results[0].firstName).to.equal(sampleContacts[0].firstName);
 
-					// Reset the method
-					contactsService.getContacts.restore();
+		// 			// Reset the method
+		// 			contactsService.getContacts.restore();
 
-					// Signal Mocha to wrap it up
-					done();
-				});
+		// 			// Signal Mocha to wrap it up
+		// 			done();
+		// 		});
 
-			// Trigger digest cycle to resolve the promise
-			$scope.$digest();
-		});
+		// 	// Trigger digest cycle to resolve the promise
+		// 	$scope.$digest();
+		// });
 
 		// Method call succeeds - Makes a GET request and resolves with list of contacts ($httpBackend)
 		it('should make a GET request and return an object of contacts ($httpBackend)', function() {

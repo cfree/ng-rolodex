@@ -1,10 +1,13 @@
 var chai = require('chai'),
 	expect = chai.expect,
-	assert = chai.assert;
+	assert = chai.assert,
+	sinon = require('sinon'),
+	mocks = require('../mocks/contactsService.mock');
 
 var AddController,
 	contactsService,
-	$location;
+	$location,
+	contactsServiceMock;
 
 describe('`AddController` controller', function() {
 
@@ -15,6 +18,7 @@ describe('`AddController` controller', function() {
 			contactsService = $injector.get('contactsService');
 			$location = $injector.get('$location');
 			$rootScope = $injector.get('$rootScope');
+			contactsServiceMock = sinon.mock(mocks.contactsServiceMock);
 
 			AddController = $controller('AddController', {
 				$location: $location,
@@ -45,6 +49,18 @@ describe('`AddController` controller', function() {
 		});
 
 		it('submits a new contact');
+
+		it('redirect to new contact edit page', function() {
+			// Inject $location
+			console.log(JSON.stringify(mocks));
+		});
+
+		// Should be called once (spy, more useful in controllers)
+		// it('should be called once (spy)', function() {
+		// 	sinon.spy(contactsService, 'getContacts');
+		// 	contactsService.getContacts();
+		// 	expect(contactsService.getContacts.calledOnce).to.equal(true);
+		// });
 	});
 
 });
