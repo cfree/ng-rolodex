@@ -5,7 +5,6 @@ A simple contacts manager.
 ### Process
 Github Flow
 
-### Waterfall Model
 #### Requirements Specification
 - Determine Project: A contacts application
 - Deliverables: 
