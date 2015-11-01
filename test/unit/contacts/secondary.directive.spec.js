@@ -11,10 +11,20 @@ describe('`secondary` directive', function() {
 		});
 	});
 
-	it('bindings are properly set up');
+	// Template loaded
 
-	it('errors are thrown when we expect them to be thrown');
+	// Controller loaded
 
-	it('view shows the full directive as expected');
+
+
+
+
+	// =========
+
+	// it('bindings are properly set up');
+
+	// it('errors are thrown when we expect them to be thrown');
+
+	// it('view shows the full directive as expected');
 
 });

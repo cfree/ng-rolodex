@@ -48,19 +48,19 @@ describe('`AddController` controller', function() {
 			expect(typeof AddController.submitForm).to.equal('function');
 		});
 
-		it('submits a new contact');
-
-		it('redirect to new contact edit page', function() {
-			// Inject $location
-			console.log(JSON.stringify(mocks));
-		});
-
 		// Should be called once (spy, more useful in controllers)
+		// Tests to see if service is called
+
 		// it('should be called once (spy)', function() {
 		// 	sinon.spy(contactsService, 'getContacts');
 		// 	contactsService.getContacts();
 		// 	expect(contactsService.getContacts.calledOnce).to.equal(true);
 		// });
+
+		it('redirect to new contact edit page', function() {
+			// Inject $location
+			// console.log(JSON.stringify(mocks));
+		});
 	});
 
 });
